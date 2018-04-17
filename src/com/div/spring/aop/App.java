@@ -1,5 +1,6 @@
 package com.div.spring.aop;
 
+import com.div.spring.camera.accessories.Lens;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -10,7 +11,14 @@ public class App {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("com/div/spring/aop/beans.xml");
 
         Camera camera = (Camera) context.getBean("camera");
+        Lens lens = (Lens) context.getBean("lens");
+
         camera.snap();
+        camera.snap(2);
+        camera.snap("Something interesting");
+        camera.snapNighttime();
+
+        lens.zoom(5);
 
         context.close();
     }
