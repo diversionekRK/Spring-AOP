@@ -24,6 +24,14 @@ public class Camera implements Machine, Electrical {
         return name;
     }
 
+    public void snap(double exposure) {
+        System.out.println("SNAP! Exposure: " + exposure);
+    }
+
+    public void snap(int exposure, double aperture) {
+        System.out.println("SNAP! Exposure: " + exposure + ", aperture: " + aperture);
+    }
+
     public void snap(Car car) {
         System.out.println("SNAP! Car.");
     }

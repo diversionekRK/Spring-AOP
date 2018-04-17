@@ -12,16 +12,34 @@ import org.springframework.stereotype.Component;
 @Component
 public class Logger {
 
-//    @Pointcut("within(@java.lang.Deprecated com.div.spring..*)")
+//    @Pointcut("bean(*a*r*)")
 //    private void pointcutDemo() {}
 
-//    @Pointcut("@target(Deprecated)")
+//    @Pointcut("args(int)")
 //    private void pointcutDemo() {}
 
-//    @Pointcut("@annotation(Deprecated)")
+//    @Pointcut("args(double)")
 //    private void pointcutDemo() {}
 
-    @Pointcut("@args(Deprecated)")
+//    @Pointcut("args(Double)")
+//    private void pointcutDemo() {}
+
+//    @Pointcut("args(..)")
+//    private void pointcutDemo() {}
+
+//    @Pointcut("args(*)")
+//    private void pointcutDemo() {}
+
+//    @Pointcut("args(int, *)")
+//    private void pointcutDemo() {}
+
+//    @Pointcut("args(.., double)")
+//    private void pointcutDemo() {}
+
+//    @Pointcut("args(.., Double)")
+//    private void pointcutDemo() {}
+
+    @Pointcut("args(*, Double)")
     private void pointcutDemo() {}
 
     //@Before("execution(void com.div.spring.aop.Camera.snap())")
