@@ -19,6 +19,7 @@ public class App {
         }
         camera.snap(500);
         camera.snap("The Eiffel Tower");
+        camera.snap(new Car());
 
         Car car = (Car) context.getBean("car");
         car.start();

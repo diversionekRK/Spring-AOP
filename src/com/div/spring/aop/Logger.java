@@ -12,28 +12,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class Logger {
 
-    @Pointcut("within(com.div.spring..*)")
-    private void withinDemo() {}
+//    @Pointcut("within(@java.lang.Deprecated com.div.spring..*)")
+//    private void pointcutDemo() {}
 
-    @Pointcut("target(com.div.spring.aop.Camera)")
-    private void targetDemo() {}
+//    @Pointcut("@target(Deprecated)")
+//    private void pointcutDemo() {}
 
-    @Pointcut("this(com.div.spring.aop.Machine)")
-    private void thisDemo() {}
+//    @Pointcut("@annotation(Deprecated)")
+//    private void pointcutDemo() {}
+
+    @Pointcut("@args(Deprecated)")
+    private void pointcutDemo() {}
 
     //@Before("execution(void com.div.spring.aop.Camera.snap())")
-    @Before("withinDemo()")
+    @Before("pointcutDemo()")
     public void withinDemoAdvice() {
-        System.out.println("Within demo advice.");
-    }
-
-    @Before("targetDemo()")
-    public void targetDemoAdvice() {
-        System.out.println("Target demo advice.");
-    }
-
-    @Before("thisDemo()")
-    public void thisDemoAdvice() {
-        System.out.println("This demo advice.");
+        System.out.println("--POINTCUT DEMO--");
     }
 }

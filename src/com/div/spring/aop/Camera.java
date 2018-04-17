@@ -24,6 +24,10 @@ public class Camera implements Machine, Electrical {
         return name;
     }
 
+    public void snap(Car car) {
+        System.out.println("SNAP! Car.");
+    }
+
     public void snapNighttime() {
         System.out.println("SNAP! Night mode");
     }

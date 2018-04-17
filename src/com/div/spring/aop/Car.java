@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@Deprecated
 public class Car {
 
+    @Deprecated
     public void start() {
         System.out.println("Starting a car.");
     }
