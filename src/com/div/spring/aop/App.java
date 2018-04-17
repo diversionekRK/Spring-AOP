@@ -13,12 +13,13 @@ public class App {
         Camera camera = (Camera) context.getBean("camera");
         Lens lens = (Lens) context.getBean("lens");
 
-        camera.snap();
-        camera.snap(2);
-        camera.snap("Something interesting");
-        camera.snapNighttime();
+        try {
+            camera.snap();
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
 
-        lens.zoom(5);
+        camera.snap(5);
 
         context.close();
     }

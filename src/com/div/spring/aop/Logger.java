@@ -1,8 +1,7 @@
 package com.div.spring.aop;
 
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,28 +12,40 @@ import org.springframework.stereotype.Component;
 @Component
 public class Logger {
 
-    @Pointcut("execution(* com.div.spring.aop.Camera.*(..))")
+    @Pointcut("execution(* com.div.spring.aop.Camera.snap())")
     private void cameraSnap() {}
-
-    @Pointcut("execution(* com.div.spring.aop.Camera.snap(String))")
-    private void cameraSnapName() {}
-
-    @Pointcut("execution(* *.*(..))")
-    private void cameraRelatedAction() {}
 
     //@Before("execution(void com.div.spring.aop.Camera.snap())")
     @Before("cameraSnap()")
-    public void aboutToTakePhoto() {
-        System.out.println("About to take a photo.");
+    public void beforeAdvice() {
+        System.out.println("Before advice.");
     }
 
-    @Before("cameraSnapName()")
-    public void aboutToTakePhotoWithName() {
-        System.out.println("About to take a photo with name.");
+    @After("cameraSnap()")
+    public void afterAdvice() {
+        System.out.println("After advice.");
     }
 
-    @Before("cameraRelatedAction()")
-    public void aboutToCameraRelatedAction() {
-        System.out.println("Doing something related to cameras.");
+    @AfterReturning("cameraSnap()")
+    public void afterReturningAdvice() {
+        System.out.println("After returning advice.");
+    }
+
+    @AfterThrowing("cameraSnap()")
+    public void afterThrowingAdvice() {
+        System.out.println("After throwing advice.");
+    }
+
+    @Around("cameraSnap()")
+    public void aroundAdvice(ProceedingJoinPoint point) {
+        System.out.println("Around advice (before).");
+
+        try {
+            point.proceed();
+        } catch (Throwable throwable) {
+            System.out.println("In around advice: " + throwable.getMessage());
+        }
+
+        System.out.println("Around advice (after).");
     }
 }
