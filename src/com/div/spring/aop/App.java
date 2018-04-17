@@ -23,6 +23,9 @@ public class App {
         Car car = (Car) context.getBean("car");
         car.start();
 
+        Lens lens = (Lens) context.getBean("lens");
+        lens.zoom(11);
+
         context.close();
     }
 }
