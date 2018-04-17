@@ -6,11 +6,12 @@ import org.springframework.stereotype.Component;
  * Created by Div on 2018-04-17.
  */
 
-@Component
-public class Camera {
+@Component("camera")
+public class Camera implements Machine, Electrical {
+
     public void snap() throws Exception {
         System.out.println("SNAP!");
-        throw new Exception("Exception...");
+        //throw new Exception("Exception...");
     }
 
     public void snap(int exposure) {

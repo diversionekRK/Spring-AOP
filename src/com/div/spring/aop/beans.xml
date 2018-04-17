@@ -7,5 +7,5 @@
     <context:component-scan base-package="com.div.spring.aop"/>
     <context:component-scan base-package="com.div.spring.camera.accessories"/>
     <context:annotation-config/>
-    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy proxy-target-class="false"/>
 </beans>

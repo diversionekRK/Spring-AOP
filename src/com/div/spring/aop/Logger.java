@@ -20,32 +20,4 @@ public class Logger {
     public void beforeAdvice() {
         System.out.println("Before advice.");
     }
-
-    @After("cameraSnap()")
-    public void afterAdvice() {
-        System.out.println("After advice.");
-    }
-
-    @AfterReturning("cameraSnap()")
-    public void afterReturningAdvice() {
-        System.out.println("After returning advice.");
-    }
-
-    @AfterThrowing("cameraSnap()")
-    public void afterThrowingAdvice() {
-        System.out.println("After throwing advice.");
-    }
-
-    @Around("cameraSnap()")
-    public void aroundAdvice(ProceedingJoinPoint point) {
-        System.out.println("Around advice (before).");
-
-        try {
-            point.proceed();
-        } catch (Throwable throwable) {
-            System.out.println("In around advice: " + throwable.getMessage());
-        }
-
-        System.out.println("Around advice (after).");
-    }
 }
