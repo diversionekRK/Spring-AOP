@@ -1,6 +1,5 @@
 package com.div.spring.aop;
 
-import com.div.spring.camera.accessories.Lens;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -10,24 +9,13 @@ public class App {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("com/div/spring/aop/beans.xml");
 
-        Camera camera = (Camera) context.getBean("camera");
+        Bird bird = (Bird) context.getBean("bird");
+        bird.fly();
 
-        try {
-            camera.snap();
-        } catch (Exception e) {
-            //e.printStackTrace();
-        }
-        camera.snap(500);
-        camera.snap("The Eiffel Tower");
-        camera.snap(new Car());
-        camera.snap(9.99);
-        camera.snap(1, 5.55);
+        Fish fish = (Fish) context.getBean("fish");
+        fish.swim();
 
-        Car car = (Car) context.getBean("car");
-        car.start();
-
-        Lens lens = (Lens) context.getBean("lens");
-        lens.zoom(11);
+        ((AnimalInterface)fish).sleep();
 
         context.close();
     }
