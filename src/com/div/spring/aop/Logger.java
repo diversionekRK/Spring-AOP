@@ -12,15 +12,24 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class Logger {
-    @Pointcut("bean(camera)")
-    private void pointcutDemo() {}
+//    @Pointcut("args(exposure, aperture)")
+//    private void pointcutDemo(int exposure, double aperture) {}
+//
+//    //@Before("execution(void com.div.spring.aop.Camera.snap())")
+//    @Before("pointcutDemo(exposure, aperture)")
+//    public void withinDemoAdvice(JoinPoint point, int exposure, double aperture) {
+//        System.out.println("--POINTCUT DEMO--");
+//
+//        System.out.printf("Exposure %d, aperture %.2f \n", exposure, aperture);
+//    }
 
-    //@Before("execution(void com.div.spring.aop.Camera.snap())")
-    @Before("pointcutDemo()")
-    public void withinDemoAdvice(JoinPoint point) {
+    @Pointcut("args(exposure, ..)")
+    private void pointcutDemo(int exposure) {}
+
+    @Before("pointcutDemo(exposure)")
+    public void withinDemoAdvice(JoinPoint point, int exposure) {
         System.out.println("--POINTCUT DEMO--");
 
-        for(Object arg : point.getArgs())
-            System.out.println("^ Arg: " + arg.toString() + " ^");
+        System.out.printf("Exposure %d \n", exposure);
     }
 }
