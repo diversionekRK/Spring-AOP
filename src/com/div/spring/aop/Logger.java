@@ -12,24 +12,22 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class Logger {
-//    @Pointcut("args(exposure, aperture)")
-//    private void pointcutDemo(int exposure, double aperture) {}
-//
-//    //@Before("execution(void com.div.spring.aop.Camera.snap())")
-//    @Before("pointcutDemo(exposure, aperture)")
-//    public void withinDemoAdvice(JoinPoint point, int exposure, double aperture) {
-//        System.out.println("--POINTCUT DEMO--");
-//
-//        System.out.printf("Exposure %d, aperture %.2f \n", exposure, aperture);
-//    }
 
     @Pointcut("args(exposure, ..)")
     private void pointcutDemo(int exposure) {}
 
-    @Before("pointcutDemo(exposure)")
+    @Pointcut("@annotation(Deprecated)")
+    private void pointcutDeprecated() {}
+
+    @Before("pointcutDemo(exposure) && pointcutDeprecated()")
     public void withinDemoAdvice(JoinPoint point, int exposure) {
         System.out.println("--POINTCUT DEMO--");
 
         System.out.printf("Exposure %d \n", exposure);
+    }
+
+    @After("!@annotation(Deprecated)")
+    public void afterAdvice() {
+        System.out.println("-- AFTER ADVICE --");
     }
 }

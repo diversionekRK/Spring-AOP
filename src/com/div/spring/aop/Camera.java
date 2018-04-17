@@ -28,6 +28,7 @@ public class Camera implements Machine, Electrical {
         System.out.println("SNAP! Exposure: " + exposure);
     }
 
+    @Deprecated
     public void snap(int exposure, double aperture) {
         System.out.println("SNAP! Exposure: " + exposure + ", aperture: " + aperture);
     }
