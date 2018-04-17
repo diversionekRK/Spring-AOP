@@ -11,14 +11,17 @@ public class App {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("com/div/spring/aop/beans.xml");
 
         Camera camera = (Camera) context.getBean("camera");
-        System.out.println(camera.getClass());
-        System.out.println(camera instanceof Camera);
 
         try {
             camera.snap();
         } catch (Exception e) {
             //e.printStackTrace();
         }
+        camera.snap(500);
+        camera.snap("The Eiffel Tower");
+
+        Car car = (Car) context.getBean("car");
+        car.start();
 
         context.close();
     }
